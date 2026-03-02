@@ -9,24 +9,12 @@ import {
 } from '@heroicons/react/24/outline';
 
 import GithubIcon from '../components/Icon/GithubIcon';
-import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
-import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
-import TwitterIcon from '../components/Icon/TwitterIcon';
 import heroImage from '../images/header-background.webp';
-import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
-import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
-import porfolioImage3 from '../images/portfolio/portfolio-3.jpg';
-import porfolioImage4 from '../images/portfolio/portfolio-4.jpg';
-import porfolioImage5 from '../images/portfolio/portfolio-5.jpg';
-import porfolioImage6 from '../images/portfolio/portfolio-6.jpg';
-import porfolioImage7 from '../images/portfolio/portfolio-7.jpg';
-import porfolioImage8 from '../images/portfolio/portfolio-8.jpg';
-import porfolioImage9 from '../images/portfolio/portfolio-9.jpg';
-import porfolioImage10 from '../images/portfolio/portfolio-10.jpg';
-import porfolioImage11 from '../images/portfolio/portfolio-11.jpg';
+import porfolioImage1 from '../images/portfolio/bank_sim.gif';
+import porfolioImage2 from '../images/portfolio/cuteness_classifier.gif';
+import porfolioImage3 from '../images/portfolio/domino_laying.gif';
 import profilepic from '../images/profilepic.jpg';
-import testimonialImage from '../images/testimonial.webp';
 import {
   About,
   ContactSection,
@@ -36,7 +24,6 @@ import {
   PortfolioItem,
   SkillGroup,
   Social,
-  TestimonialSection,
   TimelineItem,
 } from './dataDef';
 
@@ -44,8 +31,8 @@ import {
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'React Resume Template',
-  description: "Example site built with Tim Baker's react resume template",
+  title: 'Daniel Augustin | Portfolio',
+  description: 'Personal portfolio of Daniel Augustin — Engineer, Computer Scientist, and Robotics enthusiast.',
 };
 
 /**
@@ -69,18 +56,18 @@ export type SectionId = (typeof SectionId)[keyof typeof SectionId];
  */
 export const heroData: Hero = {
   imageSrc: heroImage,
-  name: `I'm Tim Baker.`,
+  name: `I'm Daniel Augustin.`,
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        I'm a Victoria based <strong className="text-stone-100">Full Stack Software Engineer</strong>, currently working
-        at <strong className="text-stone-100">Instant Domains</strong> helping build a modern, mobile-first, domain
-        registrar and site builder.
+        I'm a Boston-based <strong className="text-stone-100">Software & Robotics Engineer</strong>, currently pursuing
+        a <strong className="text-stone-100">Masters in Robotics at Northwestern University</strong> and formerly an SDE
+        at <strong className="text-stone-100">Amazon (AWS Redshift)</strong>.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        In my free time time, you can catch me training in <strong className="text-stone-100">Muay Thai</strong>,
-        plucking my <strong className="text-stone-100">banjo</strong>, or exploring beautiful{' '}
-        <strong className="text-stone-100">Vancouver Island</strong>.
+        I hold a triple degree in <strong className="text-stone-100">Computer Science, Mechanical Engineering, and Applied Mathematics</strong>{' '}
+        from UMass Amherst. I'm passionate about leveraging technology to create{' '}
+        <strong className="text-stone-100">meaningful and impactful change</strong>.
       </p>
     </>
   ),
@@ -104,16 +91,17 @@ export const heroData: Hero = {
  */
 export const aboutData: About = {
   profileImageSrc: profilepic,
-  description: `Use this bio section as your way of describing yourself and saying what you do, what technologies you like
-  to use or feel most comfortable with, describing your personality, or whatever else you feel like throwing
-  in.`,
+  description: `As an enthusiastic Engineer, whenever I look at something I find myself thinking about how it can be improved 
+  to make the user's life easier and better. Being both an engineer and a computer scientist allows me to think more freely 
+  and evaluate whether a hardware or software change is the right path forward. My goal is to push the boundaries of technology 
+  through collaboration with like-minded professionals.`,
   aboutItems: [
-    {label: 'Location', text: 'Victoria, BC', Icon: MapIcon},
-    {label: 'Age', text: '29', Icon: CalendarIcon},
-    {label: 'Nationality', text: 'Canadian / Irish', Icon: FlagIcon},
-    {label: 'Interests', text: 'Motorcycles, Muay Thai, Banjos', Icon: SparklesIcon},
-    {label: 'Study', text: 'University of Victoria', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Instant Domains, inc.', Icon: BuildingOffice2Icon},
+    {label: 'Location', text: 'Boston, MA', Icon: MapIcon},
+    {label: 'Age', text: '25', Icon: CalendarIcon},
+    {label: 'Nationality', text: 'American / African', Icon: FlagIcon},
+    {label: 'Interests', text: 'Robotics, Machine Learning, Cloud Computing', Icon: SparklesIcon},
+    {label: 'Study', text: 'Northwestern University', Icon: AcademicCapIcon},
+    {label: 'Employment', text: 'Amazon (formerly)', Icon: BuildingOffice2Icon},
   ],
 };
 
@@ -122,70 +110,86 @@ export const aboutData: About = {
  */
 export const skills: SkillGroup[] = [
   {
-    name: 'Spoken languages',
+    name: 'Spoken Languages',
     skills: [
       {
         name: 'English',
         level: 10,
       },
       {
-        name: 'French',
-        level: 4,
-      },
-      {
         name: 'Spanish',
-        level: 3,
-      },
-    ],
-  },
-  {
-    name: 'Frontend development',
-    skills: [
-      {
-        name: 'React',
         level: 9,
       },
       {
-        name: 'Typescript',
-        level: 7,
+        name: 'French',
+        level: 9,
       },
       {
-        name: 'GraphQL',
-        level: 6,
+        name: 'Creole',
+        level: 9,
       },
     ],
   },
   {
-    name: 'Backend development',
+    name: 'Programming Languages',
     skills: [
       {
-        name: 'Node.js',
+        name: 'Python',
+        level: 9,
+      },
+      {
+        name: 'Java',
         level: 8,
       },
       {
-        name: 'Rust',
-        level: 5,
+        name: 'C / C++',
+        level: 8,
       },
       {
-        name: 'Golang',
-        level: 4,
+        name: 'JavaScript / TypeScript',
+        level: 7,
       },
     ],
   },
   {
-    name: 'Mobile development',
+    name: 'Cloud & DevOps',
     skills: [
       {
-        name: 'React Native',
+        name: 'AWS (EC2, S3, Lambda, EMR)',
         level: 9,
       },
       {
-        name: 'Flutter',
-        level: 4,
+        name: 'CloudWatch / CloudFormation',
+        level: 8,
       },
       {
-        name: 'Swift',
-        level: 3,
+        name: 'Databases & SQL',
+        level: 8,
+      },
+      {
+        name: 'Agile / DevOps',
+        level: 7,
+      },
+    ],
+  },
+  {
+    name: 'Engineering & Robotics',
+    skills: [
+      {
+        name: 'ROS2',
+        level: 8,
+      },
+      {
+        name: 'MATLAB',
+        level: 7,
+      },
+      {
+        name: 'SOLIDWORKS',
+        level: 6,
+      },
+      {
+        name: 'ANSYS',
+        level: 5,
       },
     ],
   },
@@ -196,167 +200,140 @@ export const skills: SkillGroup[] = [
  */
 export const portfolioItems: PortfolioItem[] = [
   {
-    title: 'Project title 1',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage1,
-  },
-  {
-    title: 'Project title 2',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage2,
-  },
-  {
-    title: 'Project title 3',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
+    title: 'Domino Hands',
+    description: '...',
+    url: 'https://github.com/AfricanDaniel/final-project-africanpanda',
     image: porfolioImage3,
   },
   {
-    title: 'Project title 4',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage4,
+    title: 'Bank Simulator',
+    description: '...',
+    url: 'https://github.com/AfricanDaniel',
+    image: porfolioImage1,
   },
   {
-    title: 'Project title 5',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage5,
-  },
-  {
-    title: 'Project title 6',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage6,
-  },
-  {
-    title: 'Project title 7',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage7,
-  },
-  {
-    title: 'Project title 8',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage8,
-  },
-  {
-    title: 'Project title 9',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage9,
-  },
-  {
-    title: 'Project title 10',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage10,
-  },
-  {
-    title: 'Project title 11',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage11,
+    title: 'Cuteness Classifier',
+    description: '...',
+    url: 'https://github.com/AfricanDaniel',
+    image: porfolioImage2,
   },
 ];
 
 /**
- * Resume section -- TODO: Standardize resume contact format or offer MDX
+ * Resume section
  */
 export const education: TimelineItem[] = [
   {
-    date: 'April 2007',
-    location: 'Clown college',
-    title: 'Masters in Beer tasting',
-    content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
+    date: '2025 – 2026',
+    location: 'Northwestern University — Evanston, IL',
+    title: 'Master of Science in Robotics',
+    content: (
+      <p>
+        Focused on robotics systems, control theory, and intelligent autonomous agents. Building on a strong
+        foundation in mechanical engineering and computer science to push the boundaries of modern robotics.
+      </p>
+    ),
   },
   {
-    date: 'March 2003',
-    location: 'School of Business',
-    title: 'What did you study 101',
-    content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
+    date: '2019 – 2023',
+    location: 'University of Massachusetts Amherst — Amherst, MA',
+    title: 'B.S. Triple Degree: Computer Science, Mechanical Engineering & Applied Mathematics',
+    content: (
+      <p>
+        Minor in Business. Coursework included Algorithm Design & Analysis, Natural Language Processing, AI & Machine
+        Learning, DBMS Querying, Robotics, Information Retrieval, and Algorithms in Data Science.
+      </p>
+    ),
   },
 ];
 
 export const experience: TimelineItem[] = [
   {
-    date: 'March 2010 - Present',
-    location: 'Awesome Development Company',
-    title: 'Senior UX Engineer',
+    date: 'June 2023 – August 2024',
+    location: 'Amazon — California',
+    title: 'Software Development Engineer — AWS Redshift',
     content: (
       <p>
-        Describe work, special projects, notable achievements, what technologies you have been working with, and
-        anything else that would be useful for an employer to know.
+        Worked with Databases, EC2s, Clusters, and DevOps pipelines to add new functionalities to AWS Redshift.
+        Created and integrated APIs with Step Functions to process customer requests. Used CloudWatch to monitor
+        EC2, CPU memory, RDS, and EBS volumes. Operated in a large-scale Agile environment delivering impactful
+        features for AWS customers.
       </p>
     ),
   },
   {
-    date: 'March 2007 - February 2010',
-    location: 'Garage Startup Studio',
-    title: 'Junior bug fixer',
+    date: 'June 2022 – September 2022',
+    location: 'Amazon — Virginia',
+    title: 'SDE Intern — AWS',
     content: (
       <p>
-        Describe work, special projects, notable achievements, what technologies you have been working with, and
-        anything else that would be useful for an employer to know.
+        Worked with a multitude of AWS tools including EMR/EC2, S3, Lambda, CloudFormation, EventBridge, CloudWatch,
+        and DevTools. Developed new data partitioning strategies for customer databases to improve query performance,
+        and provided technical insights through developer tooling.
+      </p>
+    ),
+  },
+  {
+    date: 'July 2018 – August 2019',
+    location: 'YMCA — Massachusetts',
+    title: 'Zero Robotics Coach',
+    content: (
+      <p>
+        Organized and mentored a student robotics team competing in MIT's Zero Robotics competition. Served as
+        technical lead and support for the full competition season, guiding programming strategy to help the team
+        succeed.
       </p>
     ),
   },
 ];
 
 /**
- * Testimonial section
+ * Stats section
  */
-export const testimonial: TestimonialSection = {
-  imageSrc: testimonialImage,
-  testimonials: [
-    {
-      name: 'John Doe',
-      text: 'Use this as an opportunity to promote what it is like to work with you. High value testimonials include ones from current or past co-workers, managers, or from happy clients.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg',
-    },
-    {
-      name: 'Jane Doe',
-      text: 'Here you should write some nice things that someone has said about you. Encourage them to be specific and include important details (notes about a project you were on together, impressive quality produced, etc).',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
-    },
-    {
-      name: 'Someone else',
-      text: 'Add several of these, and keep them as fresh as possible, but be sure to focus on quality testimonials with strong highlights of your skills/work ethic.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
-    },
-  ],
-};
+export const statData = [
+  {
+    title: 'Degrees Earned',
+    value: 3,
+    description: 'CS, Mechanical Engineering, and Applied Math',
+  },
+  {
+    title: 'Years of Cloud/AWS Experience',
+    value: 2,
+    description: 'EC2, Redshift, S3, CloudWatch',
+  },
+  {
+    title: 'Robotics Projects',
+    value: 12,
+    description: 'ROS2, Computer Vision, Autonomous Navigation',
+  },
+  {
+    title: 'Lines of Code Written',
+    value: 500000,
+    description: 'Python, C++, Java, TypeScript',
+  },
+];
 
 /**
  * Contact section
  */
-
 export const contact: ContactSection = {
   headerText: 'Get in touch.',
-  description: 'Here is a good spot for a message to your readers to let them know how best to reach out to you.',
+  description: 'Feel free to reach out whether you have a project in mind, a question, or just want to connect!',
   items: [
     {
       type: ContactType.Email,
-      text: 'reachout@timbaker.me',
-      href: 'mailto:reachout@timbaker.me',
+      text: 'danielaugustin300@gmail.com',
+      href: 'mailto:danielaugustin300@gmail.com',
     },
     {
       type: ContactType.Location,
-      text: 'Victoria BC, Canada',
-      href: 'https://www.google.ca/maps/place/Victoria,+BC/@48.4262362,-123.376775,14z',
-    },
-    {
-      type: ContactType.Instagram,
-      text: '@tbakerx',
-      href: 'https://www.instagram.com/tbakerx/',
+      text: 'Boston, MA / Evanston, IL',
+      href: 'https://www.google.com/maps/place/Evanston,+IL',
     },
     {
       type: ContactType.Github,
-      text: 'tbakerx',
-      href: 'https://github.com/tbakerx',
+      text: 'AfricanDaniel',
+      href: 'https://github.com/AfricanDaniel',
     },
   ],
 };
@@ -365,9 +342,6 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/tbakerx'},
-  {label: 'Stack Overflow', Icon: StackOverflowIcon, href: 'https://stackoverflow.com/users/8553186/tim-baker'},
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/timbakerx/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/reactresume/'},
-  {label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
+  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/AfricanDaniel'},
+  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/daniel-augustin-/'},
 ];
