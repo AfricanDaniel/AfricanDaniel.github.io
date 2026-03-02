@@ -56,7 +56,15 @@ const ContactForm: FC = memo(() => {
 
   return (
     <form className="grid min-h-[320px] grid-cols-1 gap-y-4" method="POST" onSubmit={handleSendMessage}>
-      <input className={inputClasses} name="name" onChange={onChange} placeholder="Name" required type="text" value={data.name} />
+      <input
+        className={inputClasses}
+        name="name"
+        onChange={onChange}
+        placeholder="Name"
+        required
+        type="text"
+        value={data.name}
+      />
       <input
         autoComplete="email"
         className={inputClasses}
@@ -84,12 +92,8 @@ const ContactForm: FC = memo(() => {
         type="submit">
         {status === 'sending' ? 'Sending...' : 'Send Message'}
       </button>
-      {status === 'success' && (
-        <p className="text-sm text-green-400">Message sent! I'll get back to you soon.</p>
-      )}
-      {status === 'error' && (
-        <p className="text-sm text-red-400">Something went wrong. Please try again.</p>
-      )}
+      {status === 'success' && <p className="text-sm text-green-400">Message sent! I'll get back to you soon.</p>}
+      {status === 'error' && <p className="text-sm text-red-400">Something went wrong. Please try again.</p>}
     </form>
   );
 });

@@ -11,9 +11,9 @@ import {
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import heroImage from '../images/header-background.webp';
-import porfolioImage1 from '../images/portfolio/domino_laying.gif';
 import porfolioImage2 from '../images/portfolio/bank_sim.gif';
 import porfolioImage3 from '../images/portfolio/cuteness_classifier.gif';
+import porfolioImage1 from '../images/portfolio/domino_laying.gif';
 import profilepic from '../images/profilepic.jpg';
 import {
   About,
@@ -65,7 +65,8 @@ export const heroData: Hero = {
         at <strong className="text-stone-100">Amazon (AWS Redshift)</strong>.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        I hold a triple degree in <strong className="text-stone-100">Computer Science, Mechanical Engineering, and Applied Mathematics</strong>{' '}
+        I hold a triple degree in{' '}
+        <strong className="text-stone-100">Computer Science, Mechanical Engineering, and Applied Mathematics</strong>{' '}
         from UMass Amherst. I'm passionate about leveraging technology to create{' '}
         <strong className="text-stone-100">meaningful and impactful change</strong>.
       </p>
@@ -198,19 +199,22 @@ export const skills: SkillGroup[] = [
 export const portfolioItems: PortfolioItem[] = [
   {
     title: 'Domino Hands',
-    description: 'A robotics project using computer vision and ROS2 to autonomously stack and lay dominos using a robot arm.',
+    description:
+      'A robotics project using computer vision and ROS2 to autonomously stack and lay dominos using a robot arm.',
     url: 'https://github.com/AfricanDaniel/final-project-africanpanda',
     image: porfolioImage1,
   },
   {
     title: 'Bank Simulator',
-    description: 'A distributed bank server allowing users worldwide to open accounts, withdraw, and deposit money with full transaction history stored in a database. Built in C++.',
+    description:
+      'A distributed bank server allowing users worldwide to open accounts, withdraw, and deposit money with full transaction history stored in a database. Built in C++.',
     url: 'https://github.com/AfricanDaniel',
     image: porfolioImage2,
   },
   {
     title: 'Cuteness Classifier',
-    description: 'A machine learning model trained to classify dog and cat images and rank their cuteness, comparing AI ratings against human rankings. Built in Python.',
+    description:
+      'A machine learning model trained to classify dog and cat images and rank their cuteness, comparing AI ratings against human rankings. Built in Python.',
     url: 'https://github.com/AfricanDaniel',
     image: porfolioImage3,
   },
@@ -226,8 +230,8 @@ export const education: TimelineItem[] = [
     title: 'Master of Science in Robotics',
     content: (
       <p>
-        Focused on robotics systems, control theory, and intelligent autonomous agents. Building on a strong
-        foundation in mechanical engineering and computer science to push the boundaries of modern robotics.
+        Focused on robotics systems, control theory, and intelligent autonomous agents. Building on a strong foundation
+        in mechanical engineering and computer science to push the boundaries of modern robotics.
       </p>
     ),
   },
@@ -251,10 +255,10 @@ export const experience: TimelineItem[] = [
     title: 'Software Development Engineer — AWS Redshift',
     content: (
       <p>
-        Worked with Databases, EC2s, Clusters, and DevOps pipelines to add new functionalities to AWS Redshift.
-        Created and integrated APIs with Step Functions to process customer requests. Used CloudWatch to monitor
-        EC2, CPU memory, RDS, and EBS volumes. Operated in a large-scale Agile environment delivering impactful
-        features for AWS customers.
+        Worked with Databases, EC2s, Clusters, and DevOps pipelines to add new functionalities to AWS Redshift. Created
+        and integrated APIs with Step Functions to process customer requests. Used CloudWatch to monitor EC2, CPU
+        memory, RDS, and EBS volumes. Operated in a large-scale Agile environment delivering impactful features for AWS
+        customers.
       </p>
     ),
   },
@@ -264,9 +268,9 @@ export const experience: TimelineItem[] = [
     title: 'SDE Intern — AWS',
     content: (
       <p>
-        Worked with a multitude of AWS tools including EMR/EC2, S3, Lambda, CloudFormation, EventBridge, CloudWatch,
-        and DevTools. Developed new data partitioning strategies for customer databases to improve query performance,
-        and provided technical insights through developer tooling.
+        Worked with a multitude of AWS tools including EMR/EC2, S3, Lambda, CloudFormation, EventBridge, CloudWatch, and
+        DevTools. Developed new data partitioning strategies for customer databases to improve query performance, and
+        provided technical insights through developer tooling.
       </p>
     ),
   },
@@ -276,9 +280,8 @@ export const experience: TimelineItem[] = [
     title: 'Zero Robotics Coach',
     content: (
       <p>
-        Organized and mentored a student robotics team competing in MIT's Zero Robotics competition. Served as
-        technical lead and support for the full competition season, guiding programming strategy to help the team
-        succeed.
+        Organized and mentored a student robotics team competing in MIT's Zero Robotics competition. Served as technical
+        lead and support for the full competition season, guiding programming strategy to help the team succeed.
       </p>
     ),
   },
