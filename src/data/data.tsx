@@ -195,27 +195,24 @@ export const skills: SkillGroup[] = [
   },
 ];
 
-/**
- * Portfolio section
- */
 export const portfolioItems: PortfolioItem[] = [
   {
     title: 'Domino Hands',
-    description: '...',
+    description: 'A robotics project using computer vision and ROS2 to autonomously stack and lay dominos using a robot arm.',
     url: 'https://github.com/AfricanDaniel/final-project-africanpanda',
-    image: porfolioImage3,
-  },
-  {
-    title: 'Bank Simulator',
-    description: '...',
-    url: 'https://github.com/AfricanDaniel',
     image: porfolioImage1,
   },
   {
-    title: 'Cuteness Classifier',
-    description: '...',
+    title: 'Bank Simulator',
+    description: 'A distributed bank server allowing users worldwide to open accounts, withdraw, and deposit money with full transaction history stored in a database. Built in C++.',
     url: 'https://github.com/AfricanDaniel',
     image: porfolioImage2,
+  },
+  {
+    title: 'Cuteness Classifier',
+    description: 'A machine learning model trained to classify dog and cat images and rank their cuteness, comparing AI ratings against human rankings. Built in Python.',
+    url: 'https://github.com/AfricanDaniel',
+    image: porfolioImage3,
   },
 ];
 
