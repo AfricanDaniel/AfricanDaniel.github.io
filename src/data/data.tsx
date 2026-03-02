@@ -11,9 +11,9 @@ import {
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import heroImage from '../images/header-background.webp';
-import porfolioImage1 from '../images/portfolio/bank_sim.gif';
-import porfolioImage2 from '../images/portfolio/cuteness_classifier.gif';
-import porfolioImage3 from '../images/portfolio/domino_laying.gif';
+import porfolioImage1 from '../images/portfolio/domino_laying.gif';
+import porfolioImage2 from '../images/portfolio/bank_sim.gif';
+import porfolioImage3 from '../images/portfolio/cuteness_classifier.gif';
 import profilepic from '../images/profilepic.jpg';
 import {
   About,

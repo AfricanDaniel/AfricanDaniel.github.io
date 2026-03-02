@@ -61,6 +61,8 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, descrip
     [mobile, showOverlay],
   );
 
+  console.log(portfolioItems.map(i => i.title));
+
   return (
     <a
       className={classNames(
