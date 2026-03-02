@@ -1,4 +1,4 @@
-import {FC, memo, PropsWithChildren, useMemo} from 'react';
+import {FC, memo, PropsWithChildren} from 'react';
 
 import {Skill as SkillType, SkillGroup as SkillGroupType} from '../../../data/dataDef';
 
@@ -7,11 +7,11 @@ export const SkillGroup: FC<PropsWithChildren<{skillGroup: SkillGroupType}>> = m
   return (
     <div className="flex flex-col">
       <span className="text-center text-lg font-bold">{name}</span>
-      <div className="flex flex-col gap-y-2">
+      <ul className="mt-2 flex flex-col gap-y-1">
         {skills.map((skill, index) => (
           <Skill key={`${skill.name}-${index}`} skill={skill} />
         ))}
-      </div>
+      </ul>
     </div>
   );
 });
@@ -19,16 +19,12 @@ export const SkillGroup: FC<PropsWithChildren<{skillGroup: SkillGroupType}>> = m
 SkillGroup.displayName = 'SkillGroup';
 
 export const Skill: FC<{skill: SkillType}> = memo(({skill}) => {
-  const {name, level, max = 10} = skill;
-  const percentage = useMemo(() => Math.round((level / max) * 100), [level, max]);
-
+  const {name} = skill;
   return (
-    <div className="flex flex-col">
-      <span className="ml-2 text-sm font-medium">{name}</span>
-      <div className="h-5 w-full overflow-hidden rounded-full bg-neutral-300">
-        <div className="h-full rounded-full bg-orange-400" style={{width: `${percentage}%`}} />
-      </div>
-    </div>
+    <li className="flex items-center gap-x-2 text-sm">
+      <span className="h-2 w-2 rounded-full bg-orange-400 shrink-0" />
+      <span>{name}</span>
+    </li>
   );
 });
 
