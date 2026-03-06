@@ -61,7 +61,6 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, descrip
     [mobile, showOverlay],
   );
 
-
   return (
     <a
       className={classNames(

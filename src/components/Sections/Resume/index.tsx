@@ -20,18 +20,19 @@ const Resume: FC = memo(() => {
             <TimelineItem item={item} key={`${item.title}-${index}`} />
           ))}
         </ResumeSection>
-        <ResumeSection title="Skills">
-          <p className="pb-8">skills snapshots</p>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {skills.map((skillgroup, index) => (
-              <SkillGroup key={`${skillgroup.name}-${index}`} skillGroup={skillgroup} />
-            ))}
-          </div>
-        </ResumeSection>
+        <div id={SectionId.Skills}>
+          <ResumeSection title="Skills">
+            <p className="pb-8">skills snapshots</p>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {skills.map((skillgroup, index) => (
+                <SkillGroup key={`${skillgroup.name}-${index}`} skillGroup={skillgroup} />
+              ))}
+            </div>
+          </ResumeSection>
+        </div>
       </div>
     </Section>
   );
 });
-
 Resume.displayName = 'Resume';
 export default Resume;

@@ -143,13 +143,26 @@ export const skills: SkillGroup[] = [
         level: 8,
       },
       {
-        name: 'C / C++',
+        name: 'C++',
+        level: 8,
+      },
+      {
+        name: 'C',
         level: 8,
       },
       {
         name: 'JavaScript / TypeScript',
         level: 7,
+      },      
+      {
+        name: 'MATLAB',
+        level: 7,
       },
+      {
+        name: 'R',
+        level: 7,
+      },
+      
     ],
   },
   {
@@ -181,15 +194,27 @@ export const skills: SkillGroup[] = [
         level: 8,
       },
       {
-        name: 'MATLAB',
-        level: 7,
-      },
-      {
         name: 'SOLIDWORKS',
         level: 6,
       },
       {
         name: 'ANSYS',
+        level: 5,
+      },
+      {
+        name: 'RVIZ',
+        level: 5,
+      },
+      {
+        name: 'Gazebo',
+        level: 5,
+      },
+      {
+        name: 'YOLO',
+        level: 5,
+      },
+      {
+        name: 'OpenCV',
         level: 5,
       },
     ],
