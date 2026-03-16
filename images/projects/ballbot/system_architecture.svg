@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 624" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="mBlue" markerWidth="10" markerHeight="10" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="#60a5fa"/>
+    </marker>
+    <marker id="mAmber" markerWidth="10" markerHeight="10" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="#fbbf24"/>
+    </marker>
+    <marker id="mGreen" markerWidth="10" markerHeight="10" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="#34d399"/>
+    </marker>
+    <marker id="mPurple" markerWidth="10" markerHeight="10" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="#a78bfa"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="624" fill="#0d1117" rx="16"/>
+
+  <!-- Title -->
+  <text x="480" y="32" text-anchor="middle" font-size="16" font-weight="700" fill="#f0f6fc" letter-spacing="2">SYSTEM  ARCHITECTURE</text>
+  <line x1="240" y1="44" x2="720" y2="44" stroke="#30363d" stroke-width="1.5"/>
+
+  <!-- ══════════ CAMERAS ══════════ -->
+
+  <!-- ZED 2i -->
+  <rect x="40" y="54" width="385" height="78" fill="#0d2044" rx="10" stroke="#58a6ff" stroke-width="2"/>
+  <text x="232" y="80" text-anchor="middle" font-size="14" font-weight="700" fill="#79c0ff">ZED 2i  Stereo Camera</text>
+  <text x="232" y="100" text-anchor="middle" font-size="12" fill="#cdd9e5">Far-range 3D detection  ·  Visual odometry</text>
+  <text x="232" y="120" text-anchor="middle" font-size="11" fill="#58a6ff">use_zed:=true only</text>
+
+  <!-- RealSense D435i -->
+  <rect x="535" y="54" width="385" height="78" fill="#0d2044" rx="10" stroke="#58a6ff" stroke-width="2"/>
+  <text x="727" y="80" text-anchor="middle" font-size="14" font-weight="700" fill="#79c0ff">Intel RealSense D435i</text>
+  <text x="727" y="100" text-anchor="middle" font-size="12" fill="#cdd9e5">Close-range RGBD  ·  Ball · Bottle · Court Pole</text>
+  <text x="727" y="120" text-anchor="middle" font-size="11" fill="#cdd9e5">Handles ZED blind spot  ·  Always active</text>
+
+  <!-- Camera → Jetson wiring (T-shape) -->
+  <line x1="232" y1="132" x2="232" y2="152" stroke="#58a6ff" stroke-width="2"/>
+  <line x1="727" y1="132" x2="727" y2="152" stroke="#58a6ff" stroke-width="2"/>
+  <line x1="232" y1="152" x2="727" y2="152" stroke="#58a6ff" stroke-width="2"/>
+  <line x1="480" y1="152" x2="480" y2="172" stroke="#58a6ff" stroke-width="2" marker-end="url(#mBlue)"/>
+
+  <!-- ══════════ JETSON ORIN NANO ══════════ -->
+  <rect x="60" y="172" width="840" height="106" fill="#161b22" rx="10" stroke="#58a6ff" stroke-width="2"/>
+  <path d="M70,172 L890,172 Q900,172 900,182 L900,202 L60,202 L60,182 Q60,172 70,172 Z" fill="#1f6feb"/>
+  <text x="480" y="192" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Jetson Orin Nano  —  Perception</text>
+  <text x="480" y="224" text-anchor="middle" font-size="13" font-weight="600" fill="#79c0ff">ball_tracker  package</text>
+  <text x="480" y="246" text-anchor="middle" font-size="12" fill="#cdd9e5">YOLOv8 custom model  —  Classes:  tennis ball  ·  water bottle  ·  court net strap</text>
+  <text x="480" y="266" text-anchor="middle" font-size="11" fill="#8b949e">realsense_tracker_yolo.py  ·  tennis_ball_tracker.py  ·  bottle_tracker.py</text>
+
+  <!-- Jetson → ROS2 arrow -->
+  <line x1="480" y1="278" x2="480" y2="302" stroke="#e3b341" stroke-width="2.5" marker-end="url(#mAmber)"/>
+
+  <!-- ══════════ ROS2 TOPICS ══════════ -->
+  <rect x="60" y="302" width="840" height="98" fill="#161200" rx="10" stroke="#e3b341" stroke-width="2" stroke-dasharray="7 4"/>
+  <text x="480" y="325" text-anchor="middle" font-size="13" font-weight="700" fill="#e3b341" letter-spacing="2">ROS2  NETWORK</text>
+
+  <!-- Row 1 -->
+  <rect x="76" y="334" width="220" height="24" fill="#2a2000" rx="6"/>
+  <text x="186" y="351" text-anchor="middle" font-size="11" fill="#f0e68c">/tennis_ball_position</text>
+
+  <rect x="312" y="334" width="252" height="24" fill="#2a2000" rx="6"/>
+  <text x="438" y="351" text-anchor="middle" font-size="11" fill="#f0e68c">/tennis_ball_position_close</text>
+
+  <rect x="580" y="334" width="204" height="24" fill="#2a2000" rx="6"/>
+  <text x="682" y="351" text-anchor="middle" font-size="11" fill="#f0e68c">/bottle_position</text>
+
+  <!-- Row 2 -->
+  <rect x="200" y="366" width="224" height="24" fill="#2a2000" rx="6"/>
+  <text x="312" y="383" text-anchor="middle" font-size="11" fill="#f0e68c">/court_pole_position</text>
+
+  <rect x="440" y="366" width="200" height="24" fill="#2a2000" rx="6"/>
+  <text x="540" y="383" text-anchor="middle" font-size="11" fill="#f0e68c">/zed/zed_node/odom</text>
+
+  <!-- ROS2 → Pi arrow -->
+  <line x1="480" y1="400" x2="480" y2="424" stroke="#e3b341" stroke-width="2.5" marker-end="url(#mAmber)"/>
+
+  <!-- ══════════ RASPBERRY PI ══════════ -->
+  <rect x="60" y="424" width="840" height="106" fill="#161b22" rx="10" stroke="#2ea043" stroke-width="2"/>
+  <path d="M70,424 L890,424 Q900,424 900,434 L900,454 L60,454 L60,434 Q60,424 70,424 Z" fill="#1a7f37"/>
+  <text x="480" y="444" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Raspberry Pi  —  Motion Control</text>
+  <text x="480" y="475" text-anchor="middle" font-size="13" font-weight="600" fill="#56d364">ball_chaser.py  —  12-state Finite State Machine</text>
+  <text x="480" y="496" text-anchor="middle" font-size="12" fill="#cdd9e5">INIT → WAITING → CHASING (ZED / RS) → GRABBING → RETURNING → DROPPING</text>
+  <text x="480" y="516" text-anchor="middle" font-size="11" fill="#8b949e">Proportional velocity  ·  Odometry navigation  ·  TF bottle tracking  ·  Ghost-frame robust</text>
+
+  <!-- Pi → hardware arrows fanning out -->
+  <line x1="300" y1="530" x2="212" y2="560" stroke="#56d364" stroke-width="2" marker-end="url(#mGreen)"/>
+  <text x="222" y="549" text-anchor="end" font-size="11" font-weight="600" fill="#56d364">/cmd_vel</text>
+
+  <line x1="660" y1="530" x2="748" y2="560" stroke="#bc8cff" stroke-width="2" marker-end="url(#mPurple)"/>
+  <text x="758" y="546" text-anchor="start" font-size="11" font-weight="600" fill="#bc8cff">/arm_command</text>
+  <text x="758" y="560" text-anchor="start" font-size="11" font-weight="600" fill="#bc8cff">/claw_command</text>
+
+  <!-- ══════════ HARDWARE ══════════ -->
+
+  <!-- ODrive / Motors -->
+  <rect x="40" y="560" width="380" height="52" fill="#161b22" rx="10" stroke="#2ea043" stroke-width="2"/>
+  <text x="230" y="582" text-anchor="middle" font-size="13" font-weight="600" fill="#56d364">4x ODrive S1 ESCs  (CAN bus)</text>
+  <text x="230" y="601" text-anchor="middle" font-size="12" fill="#cdd9e5">Mecanum wheels  —  FL · FR · RL · RR</text>
+
+  <!-- Servo / Claw -->
+  <rect x="540" y="560" width="380" height="52" fill="#161b22" rx="10" stroke="#8957e5" stroke-width="2"/>
+  <text x="730" y="582" text-anchor="middle" font-size="13" font-weight="600" fill="#bc8cff">Dynamixel Servo Controller</text>
+  <text x="730" y="601" text-anchor="middle" font-size="12" fill="#cdd9e5">2-DOF arm  ·  Claw  ·  /dev/ttyUSB0</text>
+</svg>
