@@ -25,6 +25,7 @@
 
   <!-- shared observation arrow -->
   <line x1="450" y1="160" x2="450" y2="215" stroke="#a3a3a3" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="330" y="180" width="240" height="30" fill="#171717" />
   <text x="450" y="192" text-anchor="middle" font-size="11" fill="#d4d4d4" font-family="sans-serif">one shared observation:</text>
   <text x="450" y="207" text-anchor="middle" font-size="10" fill="#a3a3a3" font-family="sans-serif" font-style="italic">motor qpos/qvel + IMU + prev action</text>
 
