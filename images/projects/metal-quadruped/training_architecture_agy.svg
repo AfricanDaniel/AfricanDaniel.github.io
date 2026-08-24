@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#fb923c" />
+    </marker>
+    <style>
+      .bg { fill: #171717; }
+      .box { fill: #262626; stroke: #fb923c; stroke-width: 2; rx: 8; ry: 8; }
+      .inner-box { fill: #333333; stroke: #fb923c; stroke-width: 1.5; rx: 4; ry: 4; }
+      .line { stroke: #fb923c; stroke-width: 2; fill: none; }
+      .text-title { fill: #d4d4d4; font-family: sans-serif; font-size: 16px; font-weight: bold; text-anchor: middle; }
+      .text-body { fill: #d4d4d4; font-family: sans-serif; font-size: 14px; font-weight: bold; text-anchor: middle; }
+      .text-muted { fill: #a3a3a3; font-family: sans-serif; font-size: 12px; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+
+  <path d="M 550 100 L 660 100 L 660 190" class="line" marker-end="url(#arrowhead)" />
+  <path d="M 660 270 L 660 395 L 550 395" class="line" marker-end="url(#arrowhead)" />
+  <path d="M 250 412 L 120 412 L 120 100 L 250 100" class="line" marker-end="url(#arrowhead)" />
+
+  <path d="M 400 150 L 400 240" class="line" />
+  <path d="M 330 240 L 470 240" class="line" />
+  <path d="M 330 240 L 330 375" class="line" marker-end="url(#arrowhead)" />
+  <path d="M 470 240 L 470 375" class="line" marker-end="url(#arrowhead)" />
+
+  <rect x="250" y="50" width="300" height="100" class="box" />
+  <text x="400" y="75" class="text-title">Simulation Environment (DogEnv)</text>
+  <text x="400" y="95" class="text-muted">Flat ground only, static difficulty</text>
+  <text x="400" y="115" class="text-muted">Domain Rand: Friction &amp; Obs Noise</text>
+
+  <rect x="250" y="320" width="300" height="150" class="box" />
+  <text x="400" y="345" class="text-title">PPO Agent (Stable-Baselines3)</text>
+  <text x="400" y="360" class="text-muted">Symmetric Architecture</text>
+
+  <rect x="270" y="375" width="120" height="75" class="inner-box" />
+  <text x="330" y="410" class="text-body">Actor</text>
+  <text x="330" y="430" class="text-muted">Outputs Action</text>
+
+  <rect x="410" y="375" width="120" height="75" class="inner-box" />
+  <text x="470" y="410" class="text-body">Critic</text>
+  <text x="470" y="430" class="text-muted">Estimates Value</text>
+
+  <rect x="580" y="190" width="160" height="80" class="box" />
+  <text x="660" y="220" class="text-title">Reward Function</text>
+  <text x="660" y="240" class="text-muted">Uses Privileged Sim State</text>
+  <text x="660" y="255" class="text-muted">(True height/tilt/vel)</text>
+
+  <rect x="300" y="175" width="200" height="40" class="bg" />
+  <text x="400" y="195" class="text-body" fill="#fb923c">Shared Observation</text>
+  <text x="400" y="210" class="text-muted">8x qpos/vel, IMU, prev action</text>
+
+  <rect x="40" y="235" width="160" height="40" class="bg" />
+  <text x="120" y="255" class="text-body" fill="#fb923c">Action</text>
+  <text x="120" y="270" class="text-muted">8x Target Joint Angles</text>
+
+  <rect x="580" y="125" width="160" height="35" class="bg" />
+  <text x="660" y="140" class="text-muted">Privileged State</text>
+  <text x="660" y="155" class="text-muted">(True height/tilt/vel)</text>
+
+  <rect x="580" y="325" width="160" height="35" class="bg" />
+  <text x="660" y="340" class="text-muted">PPO Update</text>
+  <text x="660" y="355" class="text-muted">(Loss / Advantage)</text>
+</svg>
