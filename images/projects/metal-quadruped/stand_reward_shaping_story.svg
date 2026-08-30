@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img"
+     aria-label="Animated diagram: iterative reward shaping story for teaching an 8-DOF quadruped to stand, from defining a target pose through robustness tuning, looping every 10 seconds">
+  <title>Reward shaping story: teaching the quadruped to stand</title>
+  <desc>A 10-second looping schematic animation of five reward-shaping iterations: 1) define the standing
+    target height, 2) rise slowly instead of snapping up, 3) settle down instead of fidgeting once standing,
+    4) require all four feet grounded and stay upright instead of tipping, 5) stay stable under pushes and
+    on slippery ground.</desc>
+  <style>
+    <![CDATA[
+      .bg { fill: #171717; }
+      .ground { stroke: #52525b; stroke-width: 2; stroke-dasharray: 6 6; }
+      .context-label { fill: #a1a1aa; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 15px; }
+      .beat-label { fill: #f5f5f5; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 25px; font-weight: 700; text-anchor: middle; }
+      .target-line { stroke: #fb923c; stroke-width: 2; stroke-dasharray: 4 4; }
+      .target-label { fill: #fb923c; font-family: system-ui, sans-serif; font-size: 14px; text-anchor: start; }
+
+      .dog-body { fill: none; stroke: #fb923c; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .dog-fill { fill: #fb923c; }
+      .foot { fill: #a1a1aa; }
+
+      .status-icon { opacity: 0; }
+      .status-check text, .status-bad text { font-family: system-ui, sans-serif; font-size: 22px; font-weight: 700; text-anchor: middle; }
+
+      .arrow { opacity: 0; fill: #f87171; }
+
+      .dot { fill: #3f3f46; }
+      .dot-fill { fill: #fb923c; opacity: 0; }
+
+      #wobbleGroup { transform-box: fill-box; transform-origin: center bottom; animation: wobbleAnim 10s ease-in-out infinite; }
+      #pushGroup { transform-box: fill-box; transform-origin: center bottom; animation: pushAnim 10s ease-in-out infinite; }
+      #riseBodyGroup { animation: riseBodyAnim 10s ease-in-out infinite; }
+
+      #legBack1 { animation: bl1Anim 10s ease-in-out infinite; }
+      #legBack2 { animation: bl2Anim 10s ease-in-out infinite; }
+      #legFront1 { animation: fl1Anim 10s ease-in-out infinite; }
+      #legFront2 { animation: fl2Anim 10s ease-in-out infinite; }
+      #footBack1 { animation: footLiftAnim 10s ease-in-out infinite; }
+
+      @keyframes riseBodyAnim {
+        0%   { transform: translateY(38px); }
+        19%  { transform: translateY(38px); }
+        36%  { transform: translateY(0px); }
+        100% { transform: translateY(0px); }
+      }
+
+      @keyframes footLiftAnim {
+        0%   { transform: translateY(0px); }
+        59%  { transform: translateY(0px); }
+        61%  { transform: translateY(-30px); }
+        66%  { transform: translateY(-30px); }
+        69%  { transform: translateY(0px); }
+        100% { transform: translateY(0px); }
+      }
+
+      @keyframes bl1Anim {
+        0%   { d: path('M 430 313 L 404 325 L 440 340'); }
+        19%  { d: path('M 430 313 L 404 325 L 440 340'); }
+        36%  { d: path('M 430 275 L 421 305 L 440 340'); }
+        59%  { d: path('M 430 275 L 421 305 L 440 340'); }
+        61%  { d: path('M 430 275 L 405 292 L 440 310'); }
+        66%  { d: path('M 430 275 L 405 292 L 440 310'); }
+        69%  { d: path('M 430 275 L 421 305 L 440 340'); }
+        100% { d: path('M 430 275 L 421 305 L 440 340'); }
+      }
+
+      @keyframes bl2Anim {
+        0%   { d: path('M 450 313 L 426 325 L 470 340'); }
+        19%  { d: path('M 450 313 L 426 325 L 470 340'); }
+        36%  { d: path('M 450 275 L 446 305 L 470 340'); }
+        100% { d: path('M 450 275 L 446 305 L 470 340'); }
+      }
+
+      @keyframes fl1Anim {
+        0%   { d: path('M 360 313 L 313 325 L 330 340'); }
+        19%  { d: path('M 360 313 L 313 325 L 330 340'); }
+        36%  { d: path('M 360 275 L 332 305 L 330 340'); }
+        100% { d: path('M 360 275 L 332 305 L 330 340'); }
+      }
+
+      @keyframes fl2Anim {
+        0%   { d: path('M 380 313 L 338 325 L 360 340'); }
+        19%  { d: path('M 380 313 L 338 325 L 360 340'); }
+        36%  { d: path('M 380 275 L 357 305 L 360 340'); }
+        100% { d: path('M 380 275 L 357 305 L 360 340'); }
+      }
+
+      @keyframes wobbleAnim {
+        0%   { transform: rotate(0deg); }
+        38%  { transform: rotate(0deg); }
+        41%  { transform: rotate(-4deg); }
+        44%  { transform: rotate(4deg); }
+        47%  { transform: rotate(-3deg); }
+        50%  { transform: rotate(2deg); }
+        53%  { transform: rotate(0deg); }
+        58%  { transform: rotate(0deg); }
+        61%  { transform: rotate(8deg); }
+        65%  { transform: rotate(8deg); }
+        69%  { transform: rotate(0deg); }
+        100% { transform: rotate(0deg); }
+      }
+      @keyframes pushAnim {
+        0%   { transform: translateX(0px); }
+        79%  { transform: translateX(0px); }
+        82%  { transform: translateX(-8px); }
+        85%  { transform: translateX(3px); }
+        88%  { transform: translateX(0px); }
+        92%  { transform: translateX(8px); }
+        95%  { transform: translateX(-3px); }
+        98%  { transform: translateX(0px); }
+        100% { transform: translateX(0px); }
+      }
+
+      @keyframes targetAnim { 0%{opacity:0} 2%{opacity:1} 17%{opacity:1} 19%{opacity:0} 100%{opacity:0} }
+      #targetLine, #targetLabel { animation: targetAnim 10s ease-in-out infinite; }
+
+      @keyframes label1Anim { 0%{opacity:1} 17%{opacity:1} 19%{opacity:0} 100%{opacity:0} }
+      @keyframes label2Anim { 0%{opacity:0} 19%{opacity:0} 21%{opacity:1} 37%{opacity:1} 39%{opacity:0} 100%{opacity:0} }
+      @keyframes label3Anim { 0%{opacity:0} 39%{opacity:0} 41%{opacity:1} 57%{opacity:1} 59%{opacity:0} 100%{opacity:0} }
+      @keyframes label4Anim { 0%{opacity:0} 59%{opacity:0} 61%{opacity:1} 77%{opacity:1} 79%{opacity:0} 100%{opacity:0} }
+      @keyframes label5Anim { 0%{opacity:0} 79%{opacity:0} 81%{opacity:1} 97%{opacity:1} 99%{opacity:0} 100%{opacity:0} }
+
+      #label1 { animation: label1Anim 10s ease-in-out infinite; }
+      #label2 { animation: label2Anim 10s ease-in-out infinite; }
+      #label3 { animation: label3Anim 10s ease-in-out infinite; }
+      #label4 { animation: label4Anim 10s ease-in-out infinite; }
+      #label5 { animation: label5Anim 10s ease-in-out infinite; }
+
+      #dot1fill { animation: label1Anim 10s ease-in-out infinite; }
+      #dot2fill { animation: label2Anim 10s ease-in-out infinite; }
+      #dot3fill { animation: label3Anim 10s ease-in-out infinite; }
+      #dot4fill { animation: label4Anim 10s ease-in-out infinite; }
+      #dot5fill { animation: label5Anim 10s ease-in-out infinite; }
+
+      @keyframes feetBadAnim { 0%{opacity:0} 59%{opacity:0} 61%{opacity:1} 66%{opacity:1} 69%{opacity:0} 100%{opacity:0} }
+      @keyframes feetGoodAnim { 0%{opacity:0} 68%{opacity:0} 70%{opacity:1} 96%{opacity:1} 98%{opacity:0} 100%{opacity:0} }
+      #feetBad { animation: feetBadAnim 10s ease-in-out infinite; }
+      #feetGood { animation: feetGoodAnim 10s ease-in-out infinite; }
+
+      @keyframes arrowLeftAnim {
+        0%   { opacity: 0; transform: translateX(0px); }
+        80%  { opacity: 0; transform: translateX(0px); }
+        82%  { opacity: 1; transform: translateX(0px); }
+        85%  { opacity: 0; transform: translateX(55px); }
+        100% { opacity: 0; transform: translateX(0px); }
+      }
+      @keyframes arrowRightAnim {
+        0%   { opacity: 0; transform: translateX(0px); }
+        89%  { opacity: 0; transform: translateX(0px); }
+        91%  { opacity: 1; transform: translateX(0px); }
+        94%  { opacity: 0; transform: translateX(-55px); }
+        100% { opacity: 0; transform: translateX(0px); }
+      }
+      #arrowLeft { animation: arrowLeftAnim 10s ease-in-out infinite; }
+      #arrowRight { animation: arrowRightAnim 10s ease-in-out infinite; }
+
+      @keyframes slipAnim { 0%{opacity:0} 81%{opacity:0} 84%{opacity:0.85} 96%{opacity:0.85} 99%{opacity:0} 100%{opacity:0} }
+      #slipHatch { animation: slipAnim 10s ease-in-out infinite; }
+    ]]>
+  </style>
+
+  <rect class="bg" x="0" y="0" width="800" height="450" rx="12"/>
+
+  <text class="context-label" x="30" y="36">Teaching the quadruped to stand — reward shaping, iteration by iteration</text>
+
+  <!-- beat labels -->
+  <text id="label1" class="beat-label" x="400" y="90">1. Define the standing target</text>
+  <text id="label2" class="beat-label" x="400" y="90">2. Rise slowly — don't snap up</text>
+  <text id="label3" class="beat-label" x="400" y="90">3. Settle down once standing</text>
+  <text id="label4" class="beat-label" x="400" y="90">4. Stand on all 4 feet — don't tip</text>
+  <text id="label5" class="beat-label" x="400" y="90">5. Stay stable — pushes &amp; slippery ground</text>
+
+  <!-- ground -->
+  <line class="ground" x1="140" y1="340" x2="660" y2="340"/>
+
+  <!-- target height line (beat 1) -->
+  <line id="targetLine" class="target-line" x1="140" y1="245" x2="660" y2="245"/>
+  <text id="targetLabel" class="target-label" x="150" y="238">target standing height</text>
+
+  <!-- slip hatch under feet (beat 5) -->
+  <g id="slipHatch">
+    <line x1="300" y1="340" x2="320" y2="355" stroke="#60a5fa" stroke-width="2"/>
+    <line x1="320" y1="340" x2="340" y2="355" stroke="#60a5fa" stroke-width="2"/>
+    <line x1="340" y1="340" x2="360" y2="355" stroke="#60a5fa" stroke-width="2"/>
+    <line x1="400" y1="340" x2="420" y2="355" stroke="#60a5fa" stroke-width="2"/>
+    <line x1="420" y1="340" x2="440" y2="355" stroke="#60a5fa" stroke-width="2"/>
+    <line x1="440" y1="340" x2="460" y2="355" stroke="#60a5fa" stroke-width="2"/>
+  </g>
+
+  <!-- push arrows (beat 5) -->
+  <g id="arrowLeft" class="arrow">
+    <path d="M 190 300 L 230 290 L 230 310 Z"/>
+  </g>
+  <g id="arrowRight" class="arrow">
+    <path d="M 610 300 L 570 290 L 570 310 Z"/>
+  </g>
+
+  <!-- quadruped icon -->
+  <g id="wobbleGroup">
+    <g id="pushGroup">
+      <!-- back legs -->
+      <path id="legBack1" class="dog-body" d="M 430 275 L 421 305 L 440 340"/>
+      <path id="legBack2" class="dog-body" d="M 450 275 L 446 305 L 470 340"/>
+      <!-- front legs -->
+      <path id="legFront1" class="dog-body" d="M 360 275 L 332 305 L 330 340"/>
+      <path id="legFront2" class="dog-body" d="M 380 275 L 357 305 L 360 340"/>
+      <!-- feet -->
+      <circle id="footBack1" class="foot" cx="440" cy="340" r="7"/>
+      <circle id="footBack2" class="foot" cx="470" cy="340" r="7"/>
+      <circle class="foot" cx="360" cy="340" r="7"/>
+      <circle class="foot" cx="330" cy="340" r="7"/>
+
+      <!-- body -->
+      <g id="riseBodyGroup">
+        <ellipse class="dog-fill" cx="400" cy="255" rx="90" ry="34"/>
+        <!-- neck + head -->
+        <line class="dog-body" x1="330" y1="248" x2="305" y2="235"/>
+        <circle class="dog-fill" cx="298" cy="230" r="17"/>
+        <!-- tail -->
+        <path class="dog-body" d="M 486 255 Q 510 245 500 225" fill="none"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- feet status: bad (beat 4, imbalance) -->
+  <g id="feetBad" class="status-icon status-bad">
+    <circle cx="440" cy="310" r="10" fill="none" stroke="#f87171" stroke-width="2"/>
+    <text x="400" y="390" fill="#f87171">only 3 feet down</text>
+  </g>
+
+  <!-- feet status: good (beat 4 correction + beat 5) -->
+  <g id="feetGood" class="status-icon status-check">
+    <circle cx="440" cy="340" r="10" fill="none" stroke="#4ade80" stroke-width="2"/>
+    <circle cx="470" cy="340" r="10" fill="none" stroke="#4ade80" stroke-width="2"/>
+    <circle cx="360" cy="340" r="10" fill="none" stroke="#4ade80" stroke-width="2"/>
+    <circle cx="330" cy="340" r="10" fill="none" stroke="#4ade80" stroke-width="2"/>
+    <text x="400" y="390" fill="#4ade80">all 4 feet planted, upright</text>
+  </g>
+
+  <!-- progress dots -->
+  <g>
+    <circle class="dot" cx="320" cy="425" r="6"/>
+    <circle class="dot" cx="360" cy="425" r="6"/>
+    <circle class="dot" cx="400" cy="425" r="6"/>
+    <circle class="dot" cx="440" cy="425" r="6"/>
+    <circle class="dot" cx="480" cy="425" r="6"/>
+    <circle id="dot1fill" class="dot-fill" cx="320" cy="425" r="6"/>
+    <circle id="dot2fill" class="dot-fill" cx="360" cy="425" r="6"/>
+    <circle id="dot3fill" class="dot-fill" cx="400" cy="425" r="6"/>
+    <circle id="dot4fill" class="dot-fill" cx="440" cy="425" r="6"/>
+    <circle id="dot5fill" class="dot-fill" cx="480" cy="425" r="6"/>
+  </g>
+</svg>

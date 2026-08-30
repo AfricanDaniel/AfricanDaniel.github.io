@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img"
+     aria-label="Animated diagram: reward shaping story for teaching the quadruped to trot, looping every 8 seconds">
+  <title>Reward shaping story: teaching the quadruped to trot</title>
+  <desc>An 8-second looping schematic animation of three reward-shaping steps: 1) reward symmetric
+    diagonal-pair leg timing, 2) ramp the forward-speed target up gradually instead of jumping,
+    3) a clean, symmetric trot emerges, checkpoint walk_stand_s2_ms1000_target1_fv25_ramp_v1.</desc>
+  <style>
+    <![CDATA[
+      .bg { fill: #171717; }
+      .context-label { fill: #a1a1aa; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 15px; }
+      .beat-label { fill: #f5f5f5; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 22px; font-weight: 700; text-anchor: middle; opacity: 0; }
+      .dog-body { fill: none; stroke: #fb923c; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .dog-fill { fill: #fb923c; }
+      .foot { fill: #a1a1aa; }
+      .foot.lit { fill: #4ade80; }
+      .ground { stroke: #52525b; stroke-width: 2; stroke-dasharray: 20 20; }
+      .dot { fill: #3f3f46; }
+      .dot-fill { fill: #fb923c; opacity: 0; }
+
+      @keyframes label1Anim { 0%{opacity:1} 30%{opacity:1} 33%{opacity:0} 100%{opacity:0} }
+      @keyframes label2Anim { 0%{opacity:0} 33%{opacity:0} 36%{opacity:1} 63%{opacity:1} 66%{opacity:0} 100%{opacity:0} }
+      @keyframes label3Anim { 0%{opacity:0} 66%{opacity:0} 69%{opacity:1} 97%{opacity:1} 99%{opacity:0} 100%{opacity:0} }
+      #label1 { animation: label1Anim 8s ease-in-out infinite; }
+      #label2 { animation: label2Anim 8s ease-in-out infinite; }
+      #label3 { animation: label3Anim 8s ease-in-out infinite; }
+      #dot1fill { animation: label1Anim 8s ease-in-out infinite; }
+      #dot2fill { animation: label2Anim 8s ease-in-out infinite; }
+      #dot3fill { animation: label3Anim 8s ease-in-out infinite; }
+
+      @keyframes scrollAnim { 0%{stroke-dashoffset:0} 33%{stroke-dashoffset:-40} 66%{stroke-dashoffset:-140} 100%{stroke-dashoffset:-340} }
+      #ground { animation: scrollAnim 8s linear infinite; }
+
+      /* Beat 1 (0-33%): diagonal pairs highlighted, legs still (symmetry being defined).
+         Beat 2 (33-66%): slow synchronized diagonal swing, speed ramping up.
+         Beat 3 (66-100%): fast, clean diagonal trot -- FR+BL together, FL+BR together, 180 deg out of phase. */
+      @keyframes thighFR { 0%,33%{transform:rotate(0deg)} 40%,46%,52%,58%,64%{transform:rotate(-8deg)} 43%,49%,55%,61%{transform:rotate(8deg)} 66%,72%,78%,84%,90%,96%{transform:rotate(-22deg)} 69%,75%,81%,87%,93%,99%{transform:rotate(22deg)} 100%{transform:rotate(-22deg)} }
+      @keyframes thighBL { 0%,33%{transform:rotate(0deg)} 40%,46%,52%,58%,64%{transform:rotate(-8deg)} 43%,49%,55%,61%{transform:rotate(8deg)} 66%,72%,78%,84%,90%,96%{transform:rotate(-22deg)} 69%,75%,81%,87%,93%,99%{transform:rotate(22deg)} 100%{transform:rotate(-22deg)} }
+      @keyframes thighFL { 0%,33%{transform:rotate(0deg)} 40%,46%,52%,58%,64%{transform:rotate(8deg)} 43%,49%,55%,61%{transform:rotate(-8deg)} 66%,72%,78%,84%,90%,96%{transform:rotate(22deg)} 69%,75%,81%,87%,93%,99%{transform:rotate(-22deg)} 100%{transform:rotate(22deg)} }
+      @keyframes thighBR { 0%,33%{transform:rotate(0deg)} 40%,46%,52%,58%,64%{transform:rotate(8deg)} 43%,49%,55%,61%{transform:rotate(-8deg)} 66%,72%,78%,84%,90%,96%{transform:rotate(22deg)} 69%,75%,81%,87%,93%,99%{transform:rotate(-22deg)} 100%{transform:rotate(22deg)} }
+      .thigh-fr { animation: thighFR 8s ease-in-out infinite; }
+      .thigh-bl { animation: thighBL 8s ease-in-out infinite; }
+      .thigh-fl { animation: thighFL 8s ease-in-out infinite; }
+      .thigh-br { animation: thighBR 8s ease-in-out infinite; }
+
+      @keyframes calfLiftA { 0%,33%{transform:rotate(0deg)} 43%,49%,55%,61%{transform:rotate(-14deg)} 40%,46%,52%,58%,64%{transform:rotate(0deg)} 69%,75%,81%,87%,93%,99%{transform:rotate(-32deg)} 66%,72%,78%,84%,90%,96%{transform:rotate(0deg)} 100%{transform:rotate(0deg)} }
+      @keyframes calfLiftB { 0%,33%{transform:rotate(0deg)} 40%,46%,52%,58%,64%{transform:rotate(-14deg)} 43%,49%,55%,61%{transform:rotate(0deg)} 66%,72%,78%,84%,90%,96%{transform:rotate(-32deg)} 69%,75%,81%,87%,93%,99%{transform:rotate(0deg)} 100%{transform:rotate(-32deg)} }
+      .calf-fr { animation: calfLiftB 8s ease-in-out infinite; }
+      .calf-bl { animation: calfLiftB 8s ease-in-out infinite; }
+      .calf-fl { animation: calfLiftA 8s ease-in-out infinite; }
+      .calf-br { animation: calfLiftA 8s ease-in-out infinite; }
+
+      @keyframes footFRBL { 0%,33%{fill:#a1a1aa} 40%,46%,52%,58%,64%{fill:#a1a1aa} 43%,49%,55%,61%{fill:#4ade80} 66%,72%,78%,84%,90%,96%{fill:#a1a1aa} 69%,75%,81%,87%,93%,99%{fill:#4ade80} 100%{fill:#a1a1aa} }
+      @keyframes footFLBR { 0%,33%{fill:#a1a1aa} 43%,49%,55%,61%{fill:#a1a1aa} 40%,46%,52%,58%,64%{fill:#4ade80} 69%,75%,81%,87%,93%,99%{fill:#a1a1aa} 66%,72%,78%,84%,90%,96%{fill:#4ade80} 100%{fill:#4ade80} }
+      #footFR, #footBL { animation: footFRBL 8s ease-in-out infinite; }
+      #footFL, #footBR { animation: footFLBR 8s ease-in-out infinite; }
+
+      @keyframes symHighlight { 0%{opacity:0} 4%{opacity:1} 29%{opacity:1} 33%{opacity:0} 100%{opacity:0} }
+      #symArc { animation: symHighlight 8s ease-in-out infinite; }
+    ]]>
+  </style>
+
+  <rect class="bg" x="0" y="0" width="800" height="450" rx="12"/>
+  <text class="context-label" x="30" y="36">Teaching the quadruped to trot — reward shaping, step by step</text>
+
+  <text id="label1" class="beat-label" x="400" y="90">1. Reward diagonal-pair symmetry</text>
+  <text id="label2" class="beat-label" x="400" y="90">2. Ramp the speed target up, don't jump it</text>
+  <text id="label3" class="beat-label" x="400" y="90">3. A clean, symmetric trot holds</text>
+
+  <line class="ground" x1="140" y1="340" x2="660" y2="340"/>
+
+  <!-- diagonal-pair highlight arcs (beat 1) -->
+  <g id="symArc" stroke="#fb923c" stroke-width="2" stroke-dasharray="3 3" fill="none" opacity="0">
+    <path d="M 360 280 Q 400 200 440 280"/>
+    <path d="M 380 280 Q 400 210 470 280"/>
+  </g>
+
+  <g id="wobbleGroup">
+    <!-- back legs -->
+    <g class="thigh-br" style="transform-origin: 430px 275px;">
+      <line class="dog-body" x1="430" y1="275" x2="421" y2="305"/>
+      <g class="calf-br" style="transform-origin: 421px 305px;">
+        <line class="dog-body" x1="421" y1="305" x2="440" y2="340"/>
+        <circle id="footBR" class="foot" cx="440" cy="340" r="7"/>
+      </g>
+    </g>
+    <g class="thigh-bl" style="transform-origin: 450px 275px;">
+      <line class="dog-body" x1="450" y1="275" x2="446" y2="305"/>
+      <g class="calf-bl" style="transform-origin: 446px 305px;">
+        <line class="dog-body" x1="446" y1="305" x2="470" y2="340"/>
+        <circle id="footBL" class="foot" cx="470" cy="340" r="7"/>
+      </g>
+    </g>
+    <!-- front legs -->
+    <g class="thigh-fl" style="transform-origin: 360px 275px;">
+      <line class="dog-body" x1="360" y1="275" x2="332" y2="305"/>
+      <g class="calf-fl" style="transform-origin: 332px 305px;">
+        <line class="dog-body" x1="332" y1="305" x2="330" y2="340"/>
+        <circle id="footFL" class="foot" cx="330" cy="340" r="7"/>
+      </g>
+    </g>
+    <g class="thigh-fr" style="transform-origin: 380px 275px;">
+      <line class="dog-body" x1="380" y1="275" x2="357" y2="305"/>
+      <g class="calf-fr" style="transform-origin: 357px 305px;">
+        <line class="dog-body" x1="357" y1="305" x2="360" y2="340"/>
+        <circle id="footFR" class="foot" cx="360" cy="340" r="7"/>
+      </g>
+    </g>
+
+    <ellipse class="dog-fill" cx="400" cy="255" rx="90" ry="34"/>
+    <line class="dog-body" x1="330" y1="248" x2="305" y2="235"/>
+    <circle class="dog-fill" cx="298" cy="230" r="17"/>
+    <path class="dog-body" d="M 486 255 Q 510 245 500 225" fill="none"/>
+  </g>
+
+  <g>
+    <circle class="dot" cx="340" cy="425" r="6"/>
+    <circle class="dot" cx="400" cy="425" r="6"/>
+    <circle class="dot" cx="460" cy="425" r="6"/>
+    <circle id="dot1fill" class="dot-fill" cx="340" cy="425" r="6"/>
+    <circle id="dot2fill" class="dot-fill" cx="400" cy="425" r="6"/>
+    <circle id="dot3fill" class="dot-fill" cx="460" cy="425" r="6"/>
+  </g>
+</svg>

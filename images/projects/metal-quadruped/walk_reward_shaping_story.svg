@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img"
+     aria-label="Animated diagram: iterative reward shaping story for teaching an 8-DOF quadruped to walk, from planting feet on the ground through robustness tuning, looping every 10 seconds">
+  <title>Reward shaping story: teaching the quadruped to walk</title>
+  <desc>A 10-second looping schematic animation of five reward-shaping iterations: 1) get feet actually
+    planted on the ground instead of walking on knees, 2) let legs swing freely instead of dragging,
+    3) smooth the gait by penalizing wobble and hard landings, 4) keep it a true walk instead of
+    degenerating into a gallop, 5) domain-randomize for robustness on slippery ground, reaching stable,
+    fast walking.</desc>
+  <style>
+    <![CDATA[
+      .bg { fill: #171717; }
+      .context-label { fill: #a1a1aa; font-family: sans-serif; font-size: 14px; font-weight: 500; }
+      .beat-label { fill: #d4d4d4; font-family: sans-serif; font-size: 18px; font-weight: 600; opacity: 0; }
+      .dog-fill { fill: #262626; stroke: #fb923c; stroke-width: 2; }
+      .dog-body { stroke: #fb923c; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+      .foot { fill: #fb923c; }
+      .ground { stroke: #52525b; stroke-width: 2; stroke-dasharray: 20 20; }
+      .dot { fill: none; stroke: #52525b; stroke-width: 2; }
+      .dot-fill { fill: #fb923c; opacity: 0; }
+
+      @keyframes label1Anim { 0%{opacity:1} 17%{opacity:1} 19%{opacity:0} 100%{opacity:0} }
+      @keyframes label2Anim { 0%{opacity:0} 19%{opacity:0} 21%{opacity:1} 37%{opacity:1} 39%{opacity:0} 100%{opacity:0} }
+      @keyframes label3Anim { 0%{opacity:0} 39%{opacity:0} 41%{opacity:1} 57%{opacity:1} 59%{opacity:0} 100%{opacity:0} }
+      @keyframes label4Anim { 0%{opacity:0} 59%{opacity:0} 61%{opacity:1} 77%{opacity:1} 79%{opacity:0} 100%{opacity:0} }
+      @keyframes label5Anim { 0%{opacity:0} 79%{opacity:0} 81%{opacity:1} 97%{opacity:1} 99%{opacity:0} 100%{opacity:0} }
+
+      #label1 { animation: label1Anim 10s ease-in-out infinite; }
+      #label2 { animation: label2Anim 10s ease-in-out infinite; }
+      #label3 { animation: label3Anim 10s ease-in-out infinite; }
+      #label4 { animation: label4Anim 10s ease-in-out infinite; }
+      #label5 { animation: label5Anim 10s ease-in-out infinite; }
+
+      #dot1fill { animation: label1Anim 10s ease-in-out infinite; }
+      #dot2fill { animation: label2Anim 10s ease-in-out infinite; }
+      #dot3fill { animation: label3Anim 10s ease-in-out infinite; }
+      #dot4fill { animation: label4Anim 10s ease-in-out infinite; }
+      #dot5fill { animation: label5Anim 10s ease-in-out infinite; }
+
+      @keyframes scrollAnim {
+        0%   { stroke-dashoffset: 0; }
+        20%  { stroke-dashoffset: -30; }
+        40%  { stroke-dashoffset: -90; }
+        60%  { stroke-dashoffset: -180; }
+        80%  { stroke-dashoffset: -300; }
+        100% { stroke-dashoffset: -550; }
+      }
+      #ground { animation: scrollAnim 10s linear infinite; }
+
+      @keyframes bodyAnim {
+        /* Beat 1: Dragging knees */
+        0%   { transform: translateY(35px) rotate(0deg); }
+        18%  { transform: translateY(35px) rotate(0deg); }
+
+        /* Beat 2: Swing legs freely (feet still kinda dragging) */
+        20%  { transform: translateY(15px) rotate(0deg); }
+        38%  { transform: translateY(15px) rotate(0deg); }
+
+        /* Beat 3: Forward lean, hard wobble */
+        40%  { transform: translateY(0px) rotate(15deg); }
+        43%  { transform: translateY(8px) rotate(18deg); }
+        46%  { transform: translateY(-2px) rotate(12deg); }
+        49%  { transform: translateY(5px) rotate(16deg); }
+        52%  { transform: translateY(0px) rotate(5deg); }
+        56%  { transform: translateY(0px) rotate(0deg); }
+        58%  { transform: translateY(0px) rotate(0deg); }
+
+        /* Beat 4: Galloping prevention (bounding) */
+        60%  { transform: translateY(-15px) rotate(-5deg); }
+        62%  { transform: translateY(10px) rotate(5deg); }
+        64%  { transform: translateY(-15px) rotate(-5deg); }
+        66%  { transform: translateY(10px) rotate(5deg); }
+        68%  { transform: translateY(0px) rotate(0deg); }
+        78%  { transform: translateY(0px) rotate(0deg); }
+
+        /* Beat 5: Fast walk, stable */
+        80%  { transform: translateY(0px) rotate(0deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+      }
+      #wobbleGroup { animation: bodyAnim 10s ease-in-out infinite; transform-origin: 400px 255px; }
+
+      @keyframes swingThighA {
+        0%, 6%, 12%, 18% { transform: rotate(-10deg); }
+        3%, 9%, 15% { transform: rotate(10deg); }
+        20%, 26%, 32%, 38% { transform: rotate(-15deg); }
+        23%, 29%, 35% { transform: rotate(15deg); }
+        40%, 46%, 52%, 58%, 64%, 70%, 76%, 82%, 88%, 94%, 100% { transform: rotate(-25deg); }
+        43%, 49%, 55%, 61%, 67%, 73%, 79%, 85%, 91%, 97% { transform: rotate(25deg); }
+      }
+      @keyframes swingThighB {
+        0%, 6%, 12%, 18% { transform: rotate(10deg); }
+        3%, 9%, 15% { transform: rotate(-10deg); }
+        20%, 26%, 32%, 38% { transform: rotate(15deg); }
+        23%, 29%, 35% { transform: rotate(-15deg); }
+        40%, 46%, 52%, 58%, 64%, 70%, 76%, 82%, 88%, 94%, 100% { transform: rotate(25deg); }
+        43%, 49%, 55%, 61%, 67%, 73%, 79%, 85%, 91%, 97% { transform: rotate(-25deg); }
+      }
+      .leg-a { animation: swingThighA 10s infinite ease-in-out; }
+      .leg-b { animation: swingThighB 10s infinite ease-in-out; }
+
+      @keyframes swingCalfFrontA {
+        0%, 18% { transform: rotate(-70deg); }
+        20%, 23%, 26%, 29%, 32%, 35%, 38% { transform: rotate(-30deg); }
+        21.5%, 27.5%, 33.5% { transform: rotate(-45deg); }
+        24.5%, 30.5%, 36.5% { transform: rotate(-35deg); }
+        40%, 43%, 46%, 49%, 52%, 55%, 58%, 61%, 64%, 67%, 70%, 73%, 76%, 79%, 82%, 85%, 88%, 91%, 94%, 97%, 100% { transform: rotate(0deg); }
+        41.5%, 47.5%, 53.5%, 59.5%, 65.5%, 71.5%, 77.5%, 83.5%, 89.5%, 95.5% { transform: rotate(-30deg); }
+        44.5%, 50.5%, 56.5%, 62.5%, 68.5%, 74.5%, 80.5%, 86.5%, 92.5%, 98.5% { transform: rotate(-5deg); }
+      }
+      @keyframes swingCalfFrontB {
+        0%, 18% { transform: rotate(-70deg); }
+        20%, 23%, 26%, 29%, 32%, 35%, 38% { transform: rotate(-30deg); }
+        21.5%, 27.5%, 33.5% { transform: rotate(-35deg); }
+        24.5%, 30.5%, 36.5% { transform: rotate(-45deg); }
+        40%, 43%, 46%, 49%, 52%, 55%, 58%, 61%, 64%, 67%, 70%, 73%, 76%, 79%, 82%, 85%, 88%, 91%, 94%, 97%, 100% { transform: rotate(0deg); }
+        41.5%, 47.5%, 53.5%, 59.5%, 65.5%, 71.5%, 77.5%, 83.5%, 89.5%, 95.5% { transform: rotate(-5deg); }
+        44.5%, 50.5%, 56.5%, 62.5%, 68.5%, 74.5%, 80.5%, 86.5%, 92.5%, 98.5% { transform: rotate(-30deg); }
+      }
+      @keyframes swingCalfBackA {
+        0%, 18% { transform: rotate(0deg); }
+        20%, 23%, 26%, 29%, 32%, 35%, 38% { transform: rotate(30deg); }
+        21.5%, 27.5%, 33.5% { transform: rotate(45deg); }
+        24.5%, 30.5%, 36.5% { transform: rotate(35deg); }
+        40%, 43%, 46%, 49%, 52%, 55%, 58%, 61%, 64%, 67%, 70%, 73%, 76%, 79%, 82%, 85%, 88%, 91%, 94%, 97%, 100% { transform: rotate(0deg); }
+        41.5%, 47.5%, 53.5%, 59.5%, 65.5%, 71.5%, 77.5%, 83.5%, 89.5%, 95.5% { transform: rotate(30deg); }
+        44.5%, 50.5%, 56.5%, 62.5%, 68.5%, 74.5%, 80.5%, 86.5%, 92.5%, 98.5% { transform: rotate(5deg); }
+      }
+      @keyframes swingCalfBackB {
+        0%, 18% { transform: rotate(0deg); }
+        20%, 23%, 26%, 29%, 32%, 35%, 38% { transform: rotate(30deg); }
+        21.5%, 27.5%, 33.5% { transform: rotate(35deg); }
+        24.5%, 30.5%, 36.5% { transform: rotate(45deg); }
+        40%, 43%, 46%, 49%, 52%, 55%, 58%, 61%, 64%, 67%, 70%, 73%, 76%, 79%, 82%, 85%, 88%, 91%, 94%, 97%, 100% { transform: rotate(0deg); }
+        41.5%, 47.5%, 53.5%, 59.5%, 65.5%, 71.5%, 77.5%, 83.5%, 89.5%, 95.5% { transform: rotate(5deg); }
+        44.5%, 50.5%, 56.5%, 62.5%, 68.5%, 74.5%, 80.5%, 86.5%, 92.5%, 98.5% { transform: rotate(30deg); }
+      }
+      .calf-front-a { animation: swingCalfFrontA 10s infinite ease-in-out; }
+      .calf-front-b { animation: swingCalfFrontB 10s infinite ease-in-out; }
+      .calf-back-a { animation: swingCalfBackA 10s infinite ease-in-out; }
+      .calf-back-b { animation: swingCalfBackB 10s infinite ease-in-out; }
+
+      @keyframes slipAnim { 0%{opacity:0} 81%{opacity:0} 84%{opacity:0.85} 96%{opacity:0.85} 99%{opacity:0} 100%{opacity:0} }
+      #slipHatch { animation: slipAnim 10s ease-in-out infinite; }
+    ]]>
+  </style>
+
+  <rect class="bg" x="0" y="0" width="800" height="450" rx="12"/>
+
+  <text class="context-label" x="30" y="36">Teaching the quadruped to walk — reward shaping, iteration by iteration</text>
+
+  <!-- beat labels -->
+  <text id="label1" class="beat-label" x="400" y="90" text-anchor="middle">1. Walk on feet — stop dragging knees</text>
+  <text id="label2" class="beat-label" x="400" y="90" text-anchor="middle">2. Swing legs freely — stop dragging feet</text>
+  <text id="label3" class="beat-label" x="400" y="90" text-anchor="middle">3. Smooth the gait — fix wobble and hard landings</text>
+  <text id="label4" class="beat-label" x="400" y="90" text-anchor="middle">4. Keep a true walk — prevent galloping</text>
+  <text id="label5" class="beat-label" x="400" y="90" text-anchor="middle">5. Walk fast and stable — slippery ground</text>
+
+  <!-- ground -->
+  <line id="ground" class="ground" x1="140" y1="340" x2="660" y2="340"/>
+
+  <!-- slip hatch under feet (beat 5) -->
+  <g id="slipHatch">
+    <line x1="300" y1="340" x2="320" y2="355" stroke="#60a5fa" stroke-width="2"/>
+    <line x1="320" y1="340" x2="340" y2="355" stroke="#60a5fa" stroke-width="2"/>
+    <line x1="340" y1="340" x2="360" y2="355" stroke="#60a5fa" stroke-width="2"/>
+    <line x1="400" y1="340" x2="420" y2="355" stroke="#60a5fa" stroke-width="2"/>
+    <line x1="420" y1="340" x2="440" y2="355" stroke="#60a5fa" stroke-width="2"/>
+    <line x1="440" y1="340" x2="460" y2="355" stroke="#60a5fa" stroke-width="2"/>
+  </g>
+
+  <!-- quadruped icon -->
+  <g id="wobbleGroup">
+    <!-- back legs -->
+    <g class="leg-a" style="transform-origin: 430px 275px;">
+      <line class="dog-body" x1="430" y1="275" x2="421" y2="305" />
+      <g class="calf-back-a" style="transform-origin: 421px 305px;">
+        <line class="dog-body" x1="421" y1="305" x2="440" y2="340" />
+        <circle class="foot" cx="440" cy="340" r="7"/>
+      </g>
+    </g>
+    <g class="leg-b" style="transform-origin: 450px 275px;">
+      <line class="dog-body" x1="450" y1="275" x2="446" y2="305" />
+      <g class="calf-back-b" style="transform-origin: 446px 305px;">
+        <line class="dog-body" x1="446" y1="305" x2="470" y2="340" />
+        <circle class="foot" cx="470" cy="340" r="7"/>
+      </g>
+    </g>
+    <!-- front legs -->
+    <g class="leg-b" style="transform-origin: 360px 275px;">
+      <line class="dog-body" x1="360" y1="275" x2="332" y2="305" />
+      <g class="calf-front-b" style="transform-origin: 332px 305px;">
+        <line class="dog-body" x1="332" y1="305" x2="330" y2="340" />
+        <circle class="foot" cx="330" cy="340" r="7"/>
+      </g>
+    </g>
+    <g class="leg-a" style="transform-origin: 380px 275px;">
+      <line class="dog-body" x1="380" y1="275" x2="357" y2="305" />
+      <g class="calf-front-a" style="transform-origin: 357px 305px;">
+        <line class="dog-body" x1="357" y1="305" x2="360" y2="340" />
+        <circle class="foot" cx="360" cy="340" r="7"/>
+      </g>
+    </g>
+
+    <!-- body -->
+    <ellipse class="dog-fill" cx="400" cy="255" rx="90" ry="34"/>
+    <!-- neck + head -->
+    <line class="dog-body" x1="330" y1="248" x2="305" y2="235"/>
+    <circle class="dog-fill" cx="298" cy="230" r="17"/>
+    <!-- tail -->
+    <path class="dog-body" d="M 486 255 Q 510 245 500 225" fill="none"/>
+  </g>
+
+  <!-- progress dots -->
+  <g>
+    <circle class="dot" cx="320" cy="425" r="6"/>
+    <circle class="dot" cx="360" cy="425" r="6"/>
+    <circle class="dot" cx="400" cy="425" r="6"/>
+    <circle class="dot" cx="440" cy="425" r="6"/>
+    <circle class="dot" cx="480" cy="425" r="6"/>
+    <circle id="dot1fill" class="dot-fill" cx="320" cy="425" r="6"/>
+    <circle id="dot2fill" class="dot-fill" cx="360" cy="425" r="6"/>
+    <circle id="dot3fill" class="dot-fill" cx="400" cy="425" r="6"/>
+    <circle id="dot4fill" class="dot-fill" cx="440" cy="425" r="6"/>
+    <circle id="dot5fill" class="dot-fill" cx="480" cy="425" r="6"/>
+  </g>
+</svg>
